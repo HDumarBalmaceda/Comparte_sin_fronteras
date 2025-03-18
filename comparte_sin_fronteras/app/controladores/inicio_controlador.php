@@ -1,25 +1,11 @@
 <?php
-session_start();
 
-// Habilita la visualización de errores
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+session_start();
 
-// Configurar encabezado JSON
-header('Content-Type: application/json');
-
-// Capturar cualquier salida inesperada
-ob_start();
-
-// Verifica si el archivo de conexión existe
-$conexionPath = __DIR__ . '/../../conexion/Conexion_db.php';
-if (!file_exists($conexionPath)) {
-    echo json_encode(['status' => 'error', 'message' => 'No se encontró el archivo de conexión']);
-    exit();
-}
-
-// Incluir la conexión con la base de datos
-include_once $conexionPath;
+// Conexión con la base de datos
+include_once __DIR__ . '/../../conexion/Conexion_db.php';
 $database = new Conexion();
 $conn = $database->conn;
 
@@ -62,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Verifica la contraseña
     if (password_verify($password, $password_hashed)) {
+        $_SESSION["id"] = $id;
         $_SESSION["email"] = $email;
         echo json_encode(['status' => 'success', 'message' => 'Inicio exitoso']);
     } else {
@@ -73,9 +60,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $conn->close();
 }
 
-// Captura cualquier salida inesperada y la muestra en el JSON
-$output = ob_get_clean();
-if (!empty($output)) {
-    echo json_encode(['status' => 'error', 'message' => 'Salida inesperada: ' . $output]);
-}
+
 ?>

@@ -3,7 +3,7 @@ class Conexion {
     private $host = "127.0.0.1";
     private $usuario = "root";
     private $clave = "";
-    private $bd = "comparte_sin_fronteras2";
+    private $bd = "comparte_sin_fronteras";
     public $conn;
 
     public function __construct() {

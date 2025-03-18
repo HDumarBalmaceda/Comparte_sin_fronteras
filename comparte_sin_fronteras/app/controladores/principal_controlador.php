@@ -1,5 +1,16 @@
 <?php
+// Validacion de para mantener el inicio de sesion activo 
 session_start();
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
+exit();
+//Asegura que solo vera esta pantalla si el usuario esta logeado 
+if (!isset($_SESSION["email"])) {
+    header("Location: ../../Index.html");
+    exit();
+}
+
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);

@@ -1,10 +1,7 @@
 <?php
-session_start(); // inicio de sesion 
+session_start();
 
-$conexionPath = __DIR__ . '/../conexion/Conexion_db.php'; // conexion a la base de datos 
-
-session_destroy();
-
-echo json_encode(["status" => "success","message"=> "Seion cerrada correctamente"]);
+session_destroy(); // Destruye todas las sesiones activas
+header("Location: ../../Index.html"); // Redirige al usuario a la página principal
 exit();
 ?>

@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // Conexión con la base de datos
-include_once __DIR__ . '/../conexion/Conexion_db.php';
+include_once __DIR__ . '/../../conexion/Conexion_db.php';
 $database = new Conexion();
 $conn = $database->conn;
 
