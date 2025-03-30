@@ -1,5 +1,4 @@
 <?php
-
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
@@ -48,9 +47,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Verifica la contraseña
     if (password_verify($password, $password_hashed)) {
-        $_SESSION["id"] = $id;
-        $_SESSION["email"] = $email;
-        echo json_encode(['status' => 'success', 'message' => 'Inicio exitoso']);
+       // Obtener más datos del usuario
+    $stmt = $conn->prepare('SELECT nombre, apellido, telefono, direccion, descripcion, foto_perfil FROM usuarios WHERE id = ?');
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $usuario = $result->fetch_assoc();
+
+    // Guardar todos los datos en la sesión
+    $_SESSION["usuario_id"] = $id;
+    $_SESSION["email"] = $email;
+    $_SESSION["nombre"] = $usuario["nombre"];
+    $_SESSION["apellido"] = $usuario["apellido"];
+    $_SESSION["telefono"] = $usuario["telefono"];
+    $_SESSION["direccion"] = $usuario["direccion"];
+    $_SESSION["descripcion"] = $usuario["descripcion"];
+    $_SESSION["foto_perfil"] = $usuario["foto_perfil"];
+
+    echo json_encode(['status' => 'success', 'message' => 'Inicio exitoso']);
     } else {
         echo json_encode(['status' => 'error', 'message' => 'Contraseña incorrecta']);
     }
