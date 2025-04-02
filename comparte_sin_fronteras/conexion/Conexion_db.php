@@ -10,7 +10,7 @@ class Conexion {
         $this->conn = new mysqli($this->host, $this->usuario, $this->clave, $this->bd);
 
         if ($this->conn->connect_error) {
-            die("❌ Error de conexión: " . $this->conn->connect_error);
+            die(" Error de conexión: " . $this->conn->connect_error);
         }
     }
 

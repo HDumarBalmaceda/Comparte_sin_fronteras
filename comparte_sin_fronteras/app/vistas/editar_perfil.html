@@ -9,55 +9,75 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- JavaScript de Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 </head>
 <body class="d-flex justify-content-center align-items-center vh-100 bg-gradient" style="background: linear-gradient(#534f8a, #695be6);">
-
-    <div class="card p-4 shadow-lg" style="width: 350px; background: #aed6f1; border-radius: 10px;">
-        <h2 class="text-center mb-3">Actualizar Perfil</h2>
-        <form action="" method="POST">
-            
-            <!-- Foto de perfil -->
-            <div class="foto-container position-relative w-100 border border-secondary rounded d-flex justify-content-center align-items-center" 
-                 style="height: 200px; cursor: pointer; overflow: hidden; border-style: dashed;">
-                <input type="file" id="foto" accept="image/*" class="d-none" onchange="mostrarVistaPrevia(event)">
-                <label for="foto" class="position-absolute text-secondary">Subir foto de perfil</label>
-                <img id="preview" src="" alt="Vista previa" class="w-100 h-100 object-fit-cover d-none">
-            </div>
-
-            <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre Completo</label>
-                <input type="text" name="nombre" id="nombre" class="form-control" required>
-            </div>
-            
-            <div class="mb-3">
-                <label for="email" class="form-label">Correo Electrónico</label>
-                <input type="email" name="email" id="email" class="form-control" required>
-            </div>
-            
-            <div class="mb-3">
-                <label for="telefono" class="form-label">Teléfono</label>
-                <input type="tel" name="telefono" id="telefono" class="form-control" required>
-            </div>
-            
-            <div class="mb-3">
-                <label for="direccion" class="form-label">Dirección</label>
-                <input type="text" name="direccion" id="direccion" class="form-control" required>
-            </div>
-            
-            <div class="mb-3">
-                <label for="descripcion" class="form-label">Descripción Corta</label>
-                <textarea name="descripcion" id="descripcion" class="form-control" rows="3" required></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary w-100">Actualizar perfil</button>
-            <button type="button" class="btn btn-secondary w-100 mt-2" onclick="history.back()">Cancelar</button>
+<!--logo-->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow" style="background-color: #aed6f1">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Comparte sin Fronteras</a>
+        </div>
+    </nav>
+</header>
+   <!--formulario-->
+    <div class="card p-4 shadow-lg w-75" style="background: #aed6f1; border-radius: 10px;">
+        <h2 class="text-center mb-4">Actualizar Perfil</h2>
+        <form action="/comparte_sin_fronteras/app/controladores/actualizar_perfil.php" method="POST" enctype="multipart/form-data">
+            <div class="row align-items-center">
         
+               <!-- Foto de perfil -->
+            <div class="col-md-3 d-flex flex-column align-items-center">
+               <div class="position-relative border border-secondary rounded-circle overflow-hidden" 
+                  style="width: 150px; height: 150px; cursor: pointer; border-style: dashed;">
+                 <input type="file" id="foto" name="foto" accept="image/*" class="d-none">
+                 <label for="foto" class="position-absolute text-secondary text-center w-100" 
+                  style="top: 50%; transform: translateY(-50%); font-size: 14px;">
+                 <i class="bi bi-camera"></i> Subir foto
+            </label>
+           <img id="preview" src="" alt="Vista previa" class="w-100 h-100 object-fit-cover d-none">
+         </div>
+             </div>
+                
+                <!-- Campos del formulario -->
+                <div class="col-md-9">
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <label for="nombre" class="form-label"><i class="bi bi-person-circle"></i> Nombre</label>
+                            <input type="text" name="nombre" id="nombre" class="form-control" >
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="email" class="form-label"><i class="bi bi-envelope-at"></i> Correo</label>
+                            <input type="email" name="email" id="email" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <label for="telefono" class="form-label"><i class="bi bi-telephone-fill"></i> Teléfono</label>
+                            <input type="tel" name="telefono" id="telefono" class="form-control" >
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="ciudad" class="form-label"><i class="bi bi-building-fill"></i> Ciudad</label>
+                            <input type="text" name="ciudad" id="ciudad" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label"><i class="bi bi-book-half"></i>Descripción</label>
+                        <textarea name="descripcion" id="descripcion" class="form-control" rows="2" ></textarea>
+                    </div>
+                    <!-- Botones -->
+                    <div class="d-flex justify-content-end mt-3">
+                        <button type="submit" class="btn btn-primary me-2">Actualizar</button>
+                        <button type="button" class="btn btn-secondary" onclick="window.location.href = 'perfil.html'">Atrás</button>
+                    </div>
+                   
+                </div>
+            </div>
         </form>
     </div>
 
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <script src="/comparte_sin_fronteras/public/js/actualizar_perfil.js"></script>
 </body>
 </html>

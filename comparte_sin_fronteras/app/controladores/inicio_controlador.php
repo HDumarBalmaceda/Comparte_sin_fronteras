@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Verifica la contraseña
     if (password_verify($password, $password_hashed)) {
        // Obtener más datos del usuario
-    $stmt = $conn->prepare('SELECT nombre, apellido, telefono, direccion, descripcion, foto_perfil FROM usuarios WHERE id = ?');
+    $stmt = $conn->prepare('SELECT nombre, telefono, ciudad, descripcion, foto_perfil FROM usuarios WHERE id = ?');
     $stmt->bind_param('i', $id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -58,9 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $_SESSION["usuario_id"] = $id;
     $_SESSION["email"] = $email;
     $_SESSION["nombre"] = $usuario["nombre"];
-    $_SESSION["apellido"] = $usuario["apellido"];
     $_SESSION["telefono"] = $usuario["telefono"];
-    $_SESSION["direccion"] = $usuario["direccion"];
+    $_SESSION["ciudad"] = $usuario["ciudad"];
     $_SESSION["descripcion"] = $usuario["descripcion"];
     $_SESSION["foto_perfil"] = $usuario["foto_perfil"];
 

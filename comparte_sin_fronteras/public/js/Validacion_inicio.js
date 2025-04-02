@@ -1,4 +1,5 @@
 // Funcion para que se valide cuando se inicio sesion de manera que si es incorrecto se da un mensaje de error
+console.log('Cargando');
 document.querySelector('form').addEventListener('submit', function(event) {
     event.preventDefault(); // Evita el envío normal del formulario
 
