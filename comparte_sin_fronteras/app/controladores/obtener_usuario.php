@@ -16,7 +16,7 @@ $conexion = $database->conn;
 $usuario_id = $_SESSION['usuario_id'];
 
 // Consultar la información del usuario en la base de datos
-$sql = "SELECT nombre, apellido, email, telefono, direccion, descripcion, foto_perfil FROM usuarios WHERE id = ?";
+$sql = "SELECT nombre, email, telefono, ciudad, descripcion, foto_perfil FROM usuarios WHERE id = ?";
 $stmt = $conexion->prepare($sql);
 $stmt->bind_param("i", $usuario_id);
 $stmt->execute();
