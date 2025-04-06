@@ -1,14 +1,11 @@
 <?php
-include_once __DIR__ . '/../../conexion/Conexion_db.php';
-$database = new Conexion();
-$conn = $database->conn;
+require '../../librerias/correos.php'; // Ajusta la ruta si es necesario
 
-$database = new Conexion();
-$conn = $database->conn;
+// Prueba enviando un correo a tu cuenta personal
+$destinatario = 'hdumarb@gmail.com';  // Cámbialo por un correo tuyo
+$asunto = 'Prueba de envio de correo';
+$cuerpo = '<h2>Hola, esto es una prueba desde PHP</h2><p>Si ves este mensaje, el correo funciona correctamente.</p>';
 
-if ($conn) {
-    echo "✅ Conexión exitosa a la base de datos.";
-} else {
-    echo "❌ Error en la conexión a la base de datos.";
-}
+$resultado = enviarCorreo($destinatario, $asunto, $cuerpo);
+echo $resultado;
 ?>
