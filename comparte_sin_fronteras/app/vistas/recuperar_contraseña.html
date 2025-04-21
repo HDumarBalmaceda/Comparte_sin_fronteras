@@ -16,7 +16,7 @@
         <form id="formRecuperacion" action="/comparte_sin_fronteras/app/controladores/enviar_codigo.php" method="POST">
             <div class="mb-3">
                 <label for="email" class="form-label">Ingrese su correo electrónico</label>
-                <input type="email" name="email" id="email" class="form-control" required>
+                <input type="email" name="email" id="email" class="form-control" >
             </div>
             <button type="submit" class="btn btn-primary w-100" onclick="">Enviar código</button>
         </form>
@@ -27,19 +27,20 @@
         <form id="formCodigoForm" action="/comparte_sin_fronteras/app/controladores/verificar_codigo.php" method="POST">
             <div class="mb-3">
                 <label for="codigo" class="form-label">Código de verificación</label>
-                <input type="text" name="codigo" id="codigo" class="form-control" required>
+                <input type="text" name="codigo" id="codigo" class="form-control" >
             </div>
             <button type="submit" class="btn btn-primary w-100" onclick="">Verificar</button>
         </form>
-    </div>
+    </div> 
 
     <div id="formCambio" class="card p-4 shadow-lg" style="width: 350px; background: #aed6f1; border-radius: 10px; display: none;">
         <h2 class="text-center mb-3">Cambio de contraseña</h2>
-        <form action="" id="cambio-form">
+        <form action="/comparte_sin_fronteras/app/controladores/cambiar_contraseña.php" id="cambio-form" method="POST">
             <div class="mb-3">
                 <label for="nueva" class="form-label">Nueva contraseña</label>
                 <input type="password" name="nueva" id="nueva" class="form-control" required>
             </div>
+    
             <div class="mb-3">
                 <label for="confirmar" class="form-label">Confirmar nueva contraseña</label>
                 <input type="password" name="confirmar" id="confirmar" class="form-control" required>
@@ -48,9 +49,11 @@
         </form>
     </div>
 
-    <script src="/comparte_sin_fronteras/public/js/recuperar_contraseña.js"></script>
+
+   
+    <script src="/comparte_sin_fronteras/public/js/recuperar_contraseña.js"></script> 
     <script src="/comparte_sin_fronteras/public/js/validar_codigo.js"></script>
-    <!--<script src="/comparte_sin_fronteras/public/js/cambio_contraseña.js"></script>-->
+    <script src="/comparte_sin_fronteras/public/js/cambio_contraseña.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

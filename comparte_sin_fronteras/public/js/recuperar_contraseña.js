@@ -1,4 +1,4 @@
-console.log('Cargando.js');
+console.log('Cargando.js recuperar contraseña');
 
 // funcion para que se muestren los formularios
 function mostrarCodigo() {
@@ -6,10 +6,6 @@ function mostrarCodigo() {
     document.getElementById("formCodigo").style.display = "block";
 }
 
-function mostrarCambio() {
-    document.getElementById("formCodigo").style.display = "none";
-    document.getElementById("formCambio").style.display = "block";
-}
 
 document.addEventListener("DOMContentLoaded", function () {
     // Captura el evento de envío del formulario de email
@@ -32,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     text: data.message,
                     confirmButtonText: "Aceptar"
                 }).then(() => {
-                    mostrarCodigo(); // Llamamos la función para mostrar el formulario correcto
+                    mostrarCodigo(); // 🔹 Solo se ejecuta si el servidor confirmó que el correo existe
                 });
             } else {
                 Swal.fire({
@@ -40,9 +36,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "Error",
                     text: data.message,
                     confirmButtonText: "Intentar de nuevo"
+                }).then(() => {
+                    // Asegurarse de que el usuario no pase al siguiente formulario
+                    document.getElementById("formEmail").style.display = "block";
+                    document.getElementById("formCodigo").style.display = "none";
                 });
             }
         })
+        
+        
         .catch(error => {
             console.error("Error en la solicitud:", error);
             Swal.fire({
@@ -53,45 +55,5 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     });
-/*
-    // Captura el evento de envío del formulario de código de verificación
-    document.getElementById("formCodigo").addEventListener("submit", function (event) {
-        event.preventDefault(); 
-        
-        let form = document.getElementById("formCodigo"); // Asegura que seleccionas el formulario correcto
-        let codigo = document.getElementById("codigo").value;
 
-
-        fetch("/comparte_sin_fronteras/app/controladores/verificar_codigo.php", {
-            method: "POST",
-            body: new FormData(form)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                Swal.fire({
-                    icon: "success",
-                    title: "Validación exitosa",
-                    text: data.message,
-                }).then(() => {
-                    mostrarCambio(); // Llamamos la función para mostrar el siguiente formulario
-                });
-            } else {
-                Swal.fire({
-                    icon: "error",
-                    title: "Código incorrecto",
-                    text: data.message,
-                });
-            }
-        })
-        .catch(error => {
-            console.error("Error en la solicitud:", error);
-            Swal.fire({
-                icon: "error",
-                title: "Error",
-                text: "Hubo un problema con el servidor. Inténtalo más tarde.",
-                confirmButtonText: "Aceptar"
-            });
-        });
-    });*/
 });

@@ -52,15 +52,30 @@
           </div>
       </div>
   </nav>
+<!--Contenedor donde se muestran las publicaciones dinamicamente -->
+  <main class="container mt-5 pt-5">
+    <h2 class="text-center mb-4">Publicaciones recientes</h2>
+    <div id="contenedor-publicaciones" class="row row-cols-1 row-cols-md-3 g-4">
+
+      
+    </div>
+  </main>
 </header>
 
+<style>
+  .card-img-top {
+  width: 100%; /* Asegura que la imagen ocupe el ancho completo de la tarjeta */
+  height: 200px; /* Establece una altura fija para todas las imágenes */
+  object-fit: cover; /* Ajusta la imagen para que llene el contenedor manteniendo una apariencia equilibrada */
+}
+</style>
 
 
-    <!--Publicaciones-->
+    <!--conexiones-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../../public/js/Cerrar_sesion.js"></script>
-    <script src="/Comparte_sin_fronteras/public/js/Validacion_pagina_principal.js" ></script>
-    
-
+    <script src="/comparte_sin_fronteras/public/js/Validacion_pagina_principal.js" ></script>
+    <script src="/comparte_sin_fronteras/public/js/mostrar_publicaciones.js"></script>
+    <script src="/comparte_sin_fronteras/public/js/ver_perfiles.js"></script>
   </body>
 </html>
