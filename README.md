@@ -1,5 +1,5 @@
 # Comparte_sin_fronteras
-Comparte Sin Fronteras
+
 Descripción
 Comparte Sin Fronteras es una plataforma donde las personas pueden publicar objetos que ya no utilizan y no les dan un uso, con el propósito de entregarlos a alguien más que los necesite. Todo esto se realiza sin ningún ánimo de lucro, promoviendo la solidaridad y el intercambio altruista entre usuarios.
 
