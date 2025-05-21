@@ -39,3 +39,4 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch(error => console.error("Error al obtener los datos:", error));
 });
+
